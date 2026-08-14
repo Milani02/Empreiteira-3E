@@ -1,0 +1,99 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+  /* Gives framer-motion's useScroll(target) a non-static container to measure against */
+  position: relative;
+}
+
+/* Lenis smooth-scroll integration: let Lenis own scroll timing */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+body.custom-cursor-active,
+body.custom-cursor-active * {
+  cursor: none !important;
+}
+
+body {
+  @apply bg-paper text-ink font-body antialiased;
+}
+
+::selection {
+  background-color: #ffc800;
+  color: #0a0a0a;
+}
+
+:focus-visible {
+  outline: 3px solid #ffc800;
+  outline-offset: 2px;
+}
+
+/* Thin, dark scrollbar so the industrial palette carries through */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #0a0a0a;
+}
+::-webkit-scrollbar-thumb {
+  background: #ffc800;
+  border: 2px solid #0a0a0a;
+}
+
+/* Signature motif: repeating hazard stripe, used sparingly at section seams */
+.hazard-stripe {
+  background-image: repeating-linear-gradient(
+    -45deg,
+    #ffc800,
+    #ffc800 12px,
+    #0a0a0a 12px,
+    #0a0a0a 24px
+  );
+}
+
+/* Faint blueprint grid used as texture on dark panels */
+.blueprint-grid {
+  background-image: linear-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+  background-size: 44px 44px;
+}
+
+/* Subtle film-grain texture over the whole page for a premium, non-flat feel */
+.grain-overlay {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  mix-blend-mode: overlay;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+.animate-marquee {
+  animation: marquee 22s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
