@@ -87,6 +87,35 @@ body {
   animation: marquee 22s linear infinite;
 }
 
+/* Infinite testimonial-card belt: content is duplicated once, so -50%
+   is exactly one full loop of unique cards. */
+@keyframes cardMarquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+.animate-cardMarquee {
+  animation: cardMarquee var(--duration, 40s) linear infinite;
+}
+
+/* Slow-drifting glow blobs for the final CTA background */
+@keyframes auroraDrift {
+  0%,
+  100% {
+    transform: translate(-10%, -10%) scale(1);
+  }
+  50% {
+    transform: translate(10%, 5%) scale(1.15);
+  }
+}
+.aurora-blob {
+  animation: auroraDrift 14s ease-in-out infinite;
+  filter: blur(80px);
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

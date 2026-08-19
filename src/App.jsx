@@ -12,8 +12,10 @@ import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import Sobre from "./components/Sobre";
 import Servicos from "./components/Servicos";
+import Historia from "./components/Historia";
 import Diferenciais from "./components/Diferenciais";
 import Depoimentos from "./components/Depoimentos";
+import ComoFunciona from "./components/ComoFunciona";
 import FAQ from "./components/FAQ";
 import CTAFinal from "./components/CTAFinal";
 import Footer from "./components/Footer";
@@ -49,8 +51,10 @@ export default function App() {
         <Marquee items={TICKER_ITEMS} />
         <Sobre />
         <Servicos />
+        <Historia />
         <Diferenciais />
         <Depoimentos />
+        <ComoFunciona />
         <FAQ />
         <CTAFinal />
       </main>

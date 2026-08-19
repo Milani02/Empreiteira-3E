@@ -1,6 +1,9 @@
 import { motion } from "framer-motion";
 import { DIFFERENTIALS } from "../data";
 import { Eyebrow, HazardStripe } from "./ui";
+import SplitText from "./SplitText";
+import GlowCard from "./GlowCard";
+import { BentoGrid, BentoCell } from "./BentoGrid";
 
 export default function Diferenciais() {
   return (
@@ -16,42 +19,46 @@ export default function Diferenciais() {
           transition={{ duration: 0.5 }}
           className="max-w-2xl"
         >
-          <Eyebrow dark>Por que escolher a 3E</Eyebrow>
-          <h2 className="mt-4 font-display text-4xl leading-[1.02] text-white sm:text-5xl">
+          <Eyebrow dark>Por que escolher a 3M</Eyebrow>
+          <SplitText
+            as="h2"
+            className="mt-4 font-display text-4xl leading-[1.02] text-white sm:text-5xl"
+          >
             CONFIANÇA NÃO É PROMESSA, É PROCESSO
-          </h2>
+          </SplitText>
         </motion.div>
 
-        <motion.div
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, amount: 0.2 }}
-          variants={{ show: { transition: { staggerChildren: 0.1 } } }}
-          className="mt-14 grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-4"
-        >
-          {DIFFERENTIALS.map((d) => {
+        <BentoGrid className="mt-14 lg:grid-cols-4">
+          {DIFFERENTIALS.map((d, i) => {
             const Icon = d.icon;
             return (
-              <motion.div
-                key={d.title}
-                variants={{
-                  hidden: { opacity: 0, y: 24 },
-                  show: { opacity: 1, y: 0, transition: { duration: 0.5 } },
-                }}
-                whileHover={{ y: -4 }}
-              >
+              <BentoCell key={d.title} span={d.big ? 2 : 1}>
                 <motion.div
-                  whileHover={{ borderColor: "#FFC800", rotate: 3 }}
-                  className="flex h-14 w-14 items-center justify-center border-2 border-safety/60"
+                  initial={{ opacity: 0, y: 24 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.3 }}
+                  transition={{ duration: 0.5, delay: i * 0.06 }}
+                  className="h-full"
                 >
-                  <Icon className="h-6 w-6 text-safety" strokeWidth={1.75} />
+                  <GlowCard
+                    spotlightColor="255,200,0"
+                    className={`h-full border border-white/10 bg-white/[0.02] p-7 ${d.big ? "sm:flex sm:flex-col sm:justify-center sm:p-9" : ""}`}
+                  >
+                    <div className="flex h-14 w-14 items-center justify-center border-2 border-safety/60 transition-colors group-hover:border-safety">
+                      <Icon className="h-6 w-6 text-safety" strokeWidth={1.75} />
+                    </div>
+                    <h3 className={`mt-5 font-head font-bold text-white ${d.big ? "text-2xl" : "text-lg"}`}>
+                      {d.title}
+                    </h3>
+                    <p className={`mt-2 font-body leading-relaxed text-white/55 ${d.big ? "max-w-sm text-base" : "text-sm"}`}>
+                      {d.desc}
+                    </p>
+                  </GlowCard>
                 </motion.div>
-                <h3 className="mt-5 font-head text-lg font-bold text-white">{d.title}</h3>
-                <p className="mt-2 font-body text-sm leading-relaxed text-white/55">{d.desc}</p>
-              </motion.div>
+              </BentoCell>
             );
           })}
-        </motion.div>
+        </BentoGrid>
       </div>
     </section>
   );

@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import { FAQS } from "../data";
 import { Eyebrow } from "./ui";
+import SplitText from "./SplitText";
 
 function FAQItem({ item, isOpen, onClick }) {
   return (
@@ -50,9 +51,9 @@ export default function FAQ() {
           transition={{ duration: 0.5 }}
         >
           <Eyebrow>Perguntas frequentes</Eyebrow>
-          <h2 className="mt-4 font-display text-4xl leading-[1.02] text-ink sm:text-5xl">
+          <SplitText as="h2" className="mt-4 font-display text-4xl leading-[1.02] text-ink sm:text-5xl">
             AINDA COM DÚVIDA?
-          </h2>
+          </SplitText>
         </motion.div>
 
         <div className="mt-12">

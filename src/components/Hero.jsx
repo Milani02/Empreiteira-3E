@@ -32,7 +32,7 @@ export default function Hero() {
       <motion.div style={{ y: imgY }} className="absolute inset-0 -top-10">
         <img
           src={IMG.hero}
-          alt="Equipe da 3E Empreiteira em canteiro de obra"
+          alt="Equipe da 3M Empreiteira em canteiro de obra"
           className="h-full w-full object-cover opacity-45"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/85 to-ink/40" />
@@ -70,9 +70,9 @@ export default function Hero() {
             transition={{ duration: 0.6, delay: 0.6 }}
             className="mt-7 max-w-xl font-body text-base text-white/75 sm:text-lg"
           >
-            Da fundação ao acabamento, da tomada que não liga ao cano que estourou — colocamos uma
-            equipe especializada na sua obra ou reforma, com orçamento claro e prazo que a gente
-            cumpre. Sem intermediário, sem sumiço, sem desculpa.
+            Da fundação ao acabamento, da tomada que não liga ao cano que estourou — a 3M coloca
+            uma equipe própria na sua obra, com orçamento fechado em até 48h e prazo em contrato.
+            Sem terceirizado, sem sumiço, sem "depois eu volto".
           </motion.p>
 
           <motion.div
@@ -83,7 +83,7 @@ export default function Hero() {
           >
             <Magnetic>
               <a
-                href={waLink("Olá! Vim pelo site e quero um orçamento com a 3E Empreiteira.")}
+                href={waLink("Olá! Vim pelo site e quero um orçamento com a 3M Empreiteira.")}
                 target="_blank"
                 rel="noreferrer"
                 data-cursor="view"

@@ -1,7 +1,8 @@
 import { motion } from "framer-motion";
-import { CheckCircle2, XCircle } from "lucide-react";
-import { IMG } from "../data";
+import { CheckCircle2, XCircle, Quote } from "lucide-react";
+import { IMG, STORY } from "../data";
 import { Eyebrow, StampBadge } from "./ui";
+import SplitText from "./SplitText";
 import ImageReveal from "./ImageReveal";
 
 const PAINS = [
@@ -21,7 +22,29 @@ const SOLUTIONS = [
 export default function Sobre() {
   return (
     <section id="sobre" className="bg-paper py-24 sm:py-32">
-      <div className="mx-auto grid max-w-7xl grid-cols-1 gap-16 px-5 sm:px-8 lg:grid-cols-2 lg:items-center">
+      <div className="mx-auto max-w-7xl px-5 sm:px-8">
+        <motion.div
+          initial={{ opacity: 0, y: 18 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.5 }}
+          transition={{ duration: 0.5 }}
+          className="relative mx-auto max-w-3xl border-2 border-ink bg-white p-7 shadow-[8px_8px_0_0_#0A0A0A] sm:p-9"
+        >
+          <Quote className="h-7 w-7 text-safety-dim" />
+          <span className="mt-3 block font-mono text-xs font-semibold uppercase tracking-widest text-ink/40">
+            {STORY.eyebrow}
+          </span>
+          <p className="mt-3 font-head text-xl font-bold leading-snug text-ink sm:text-2xl">
+            {STORY.lead}
+          </p>
+          <p className="mt-3 font-body text-[15px] leading-relaxed text-ink/65">{STORY.detail}</p>
+          <span className="mt-5 inline-block bg-safety px-3 py-1.5 font-mono text-[11px] font-bold uppercase tracking-widest text-ink">
+            {STORY.tag}
+          </span>
+        </motion.div>
+      </div>
+
+      <div className="mx-auto mt-20 grid max-w-7xl grid-cols-1 gap-16 px-5 sm:px-8 lg:grid-cols-2 lg:items-center">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -29,11 +52,14 @@ export default function Sobre() {
           transition={{ duration: 0.6 }}
         >
           <Eyebrow>O problema</Eyebrow>
-          <h2 className="mt-4 font-display text-4xl leading-[1.02] text-ink sm:text-5xl">
+          <SplitText
+            as="h2"
+            className="mt-4 font-display text-4xl leading-[1.02] text-ink sm:text-5xl"
+          >
             VOCÊ JÁ CONTRATOU ALGUÉM QUE SUMIU NO MEIO DA OBRA?
-          </h2>
+          </SplitText>
           <p className="mt-6 max-w-lg font-body text-base leading-relaxed text-ink/70">
-            A 3E Empreiteira nasceu pra acabar com isso. Não terceirizamos o seu problema pra
+            A 3M Empreiteira nasceu pra acabar com isso. Não terceirizamos o seu problema pra
             quem a gente não vai poder cobrar depois — cada etapa passa pela nossa própria
             equipe, do primeiro tijolo ao último parafuso.
           </p>
@@ -41,7 +67,7 @@ export default function Sobre() {
           <div className="mt-10 grid grid-cols-1 gap-8 sm:grid-cols-2">
             <div>
               <span className="font-mono text-xs font-semibold uppercase tracking-widest text-ink/40">
-                Sem a 3E
+                Sem a 3M
               </span>
               <ul className="mt-4 space-y-3">
                 {PAINS.map((p) => (
@@ -54,7 +80,7 @@ export default function Sobre() {
             </div>
             <div>
               <span className="font-mono text-xs font-semibold uppercase tracking-widest text-safety-dim">
-                Com a 3E
+                Com a 3M
               </span>
               <ul className="mt-4 space-y-3">
                 {SOLUTIONS.map((s) => (

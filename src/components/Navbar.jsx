@@ -23,11 +23,15 @@ export default function Navbar() {
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 transition-colors duration-300 ${
-        scrolled ? "bg-ink/95 backdrop-blur border-b border-white/10" : "bg-transparent"
+      className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
+        scrolled ? "bg-ink/90 backdrop-blur-md border-b border-white/10 py-0" : "bg-transparent py-1.5"
       }`}
     >
-      <nav className="mx-auto flex max-w-7xl items-center justify-between px-5 py-3 sm:px-8">
+      <nav
+        className={`mx-auto flex max-w-7xl items-center justify-between px-5 transition-all duration-300 sm:px-8 ${
+          scrolled ? "py-2.5" : "py-3"
+        }`}
+      >
         <a
           href="#inicio"
           onClick={(e) => go(e, "#inicio")}
@@ -35,7 +39,7 @@ export default function Navbar() {
           className="flex items-center gap-3"
         >
           <span className="flex h-10 w-10 items-center justify-center bg-safety font-display text-lg text-ink">
-            3E
+            3M
           </span>
           <span className="flex flex-col leading-none">
             <span className="font-head text-base font-extrabold tracking-tight text-white">
@@ -64,7 +68,7 @@ export default function Navbar() {
         <div className="hidden lg:block">
           <Magnetic>
             <a
-              href={waLink("Olá! Vim pelo site e quero um orçamento com a 3E Empreiteira.")}
+              href={waLink("Olá! Vim pelo site e quero um orçamento com a 3M Empreiteira.")}
               target="_blank"
               rel="noreferrer"
               data-cursor="view"
@@ -94,7 +98,7 @@ export default function Navbar() {
             className="fixed inset-0 z-50 bg-ink lg:hidden"
           >
             <div className="flex items-center justify-between px-5 py-3">
-              <span className="font-head text-base font-extrabold text-white">3E EMPREITEIRA</span>
+              <span className="font-head text-base font-extrabold text-white">3M EMPREITEIRA</span>
               <button onClick={() => setOpen(false)} aria-label="Fechar menu" className="text-white">
                 <X className="h-7 w-7" />
               </button>
@@ -120,7 +124,7 @@ export default function Navbar() {
                 </motion.a>
               ))}
               <a
-                href={waLink("Olá! Vim pelo site e quero um orçamento com a 3E Empreiteira.")}
+                href={waLink("Olá! Vim pelo site e quero um orçamento com a 3M Empreiteira.")}
                 target="_blank"
                 rel="noreferrer"
                 className="mt-6 inline-flex items-center justify-center gap-2 bg-safety px-5 py-4 font-head text-base font-bold text-ink"

@@ -1,9 +1,49 @@
 import { useEffect, useState } from "react";
 import { motion, animate } from "framer-motion";
 
+const CHARS = "3M01#/·";
+
+/**
+ * Scrambles toward the final "3M" mark before settling — a cheap
+ * version of the "encrypted text" reveal seen on Aceternity UI.
+ */
+function useScrambleReveal(target, active) {
+  const [text, setText] = useState(target);
+
+  useEffect(() => {
+    if (!active) {
+      setText(target);
+      return;
+    }
+    let frame = 0;
+    const totalFrames = 14;
+    const id = setInterval(() => {
+      frame += 1;
+      if (frame >= totalFrames) {
+        setText(target);
+        clearInterval(id);
+        return;
+      }
+      const revealCount = Math.floor((frame / totalFrames) * target.length);
+      setText(
+        target
+          .split("")
+          .map((ch, i) =>
+            i < revealCount ? ch : CHARS[Math.floor(Math.random() * CHARS.length)]
+          )
+          .join("")
+      );
+    }, 45);
+    return () => clearInterval(id);
+  }, [target, active]);
+
+  return text;
+}
+
 export default function Preloader({ onDone }) {
   const [percent, setPercent] = useState(0);
   const [exiting, setExiting] = useState(false);
+  const mark = useScrambleReveal("3M", true);
 
   useEffect(() => {
     const controls = animate(0, 100, {
@@ -33,7 +73,7 @@ export default function Preloader({ onDone }) {
         transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
         className="relative flex h-24 w-24 items-center justify-center border-2 border-dashed border-safety sm:h-28 sm:w-28"
       >
-        <span className="font-display text-3xl text-safety sm:text-4xl">3E</span>
+        <span className="font-display text-3xl text-safety sm:text-4xl">{mark}</span>
       </motion.div>
 
       <div className="relative mt-8 font-mono text-sm tracking-[0.3em] text-white/50">

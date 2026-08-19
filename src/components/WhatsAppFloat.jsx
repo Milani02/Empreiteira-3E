@@ -5,10 +5,10 @@ import { WhatsAppIcon } from "./ui";
 export default function WhatsAppFloat() {
   return (
     <motion.a
-      href={waLink("Olá! Vim pelo site e quero um orçamento com a 3E Empreiteira.")}
+      href={waLink("Olá! Vim pelo site e quero um orçamento com a 3M Empreiteira.")}
       target="_blank"
       rel="noreferrer"
-      aria-label="Chamar a 3E Empreiteira no WhatsApp"
+      aria-label="Chamar a 3M Empreiteira no WhatsApp"
       data-cursor="view"
       initial={{ opacity: 0, scale: 0.6 }}
       animate={{ opacity: 1, scale: 1 }}

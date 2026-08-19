@@ -2,16 +2,26 @@ import { motion } from "framer-motion";
 import { IMG, waLink } from "../data";
 import { Eyebrow, HazardStripe, WhatsAppIcon } from "./ui";
 import Magnetic from "./Magnetic";
+import SplitText from "./SplitText";
 
 export default function CTAFinal() {
   return (
     <section className="relative overflow-hidden bg-ink py-28 sm:py-36">
       <HazardStripe className="absolute inset-x-0 top-0 h-2.5" />
+
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
+        <div className="aurora-blob absolute -left-1/4 top-0 h-[60vw] w-[60vw] rounded-full bg-safety/20" />
+        <div
+          className="aurora-blob absolute -right-1/4 bottom-0 h-[50vw] w-[50vw] rounded-full bg-safety/10"
+          style={{ animationDelay: "-6s" }}
+        />
+      </div>
+
       <motion.img
         src={IMG.ctaFinal}
         alt="Casa reformada com acabamento moderno"
         initial={{ scale: 1.15, opacity: 0 }}
-        whileInView={{ scale: 1, opacity: 0.25 }}
+        whileInView={{ scale: 1, opacity: 0.2 }}
         viewport={{ once: true, amount: 0.3 }}
         transition={{ duration: 1.4, ease: [0.16, 1, 0.3, 1] }}
         className="absolute inset-0 h-full w-full object-cover"
@@ -26,18 +36,21 @@ export default function CTAFinal() {
           transition={{ duration: 0.6 }}
         >
           <Eyebrow dark>Pronto pra resolver?</Eyebrow>
-          <h2 className="mx-auto mt-5 max-w-3xl font-display text-[11vw] leading-[0.95] text-white sm:text-6xl">
+          <SplitText
+            as="h2"
+            className="mx-auto mt-5 max-w-3xl font-display text-[11vw] leading-[0.95] text-white sm:text-6xl"
+          >
             SUA OBRA COMEÇA COM UMA MENSAGEM
-          </h2>
+          </SplitText>
           <p className="mx-auto mt-6 max-w-lg font-body text-base text-white/70">
-            Fale agora com a 3E Empreiteira e receba um orçamento detalhado, sem compromisso, em
+            Fale agora com a 3M Empreiteira e receba um orçamento detalhado, sem compromisso, em
             até 48h.
           </p>
 
           <div className="mt-10 flex flex-col items-center gap-4">
             <Magnetic strength={0.3}>
               <a
-                href={waLink("Olá! Vim pelo site e quero um orçamento com a 3E Empreiteira.")}
+                href={waLink("Olá! Vim pelo site e quero um orçamento com a 3M Empreiteira.")}
                 target="_blank"
                 rel="noreferrer"
                 data-cursor="view"
@@ -50,6 +63,10 @@ export default function CTAFinal() {
             </Magnetic>
             <span className="font-mono text-xs uppercase tracking-widest text-white/40">
               Atendimento humano · sem robô · sem enrolação
+            </span>
+            <span className="mt-1 max-w-sm font-body text-xs text-white/35">
+              Atendemos um número limitado de obras por mês pra manter equipe própria e prazo em
+              dia — quanto antes chamar, mais cedo entra na fila.
             </span>
           </div>
         </motion.div>

@@ -1,7 +1,9 @@
 import { motion } from "framer-motion";
-import { Star } from "lucide-react";
-import { TESTIMONIALS } from "../data";
+import { TESTIMONIALS, CASE_DESTAQUE } from "../data";
 import { Eyebrow } from "./ui";
+import SplitText from "./SplitText";
+import InfiniteMovingCards from "./InfiniteMovingCards";
+import CompareSlider from "./CompareSlider";
 
 export default function Depoimentos() {
   return (
@@ -15,52 +17,56 @@ export default function Depoimentos() {
           className="max-w-2xl"
         >
           <Eyebrow>Quem já contratou</Eyebrow>
-          <h2 className="mt-4 font-display text-4xl leading-[1.02] text-ink sm:text-5xl">
+          <SplitText as="h2" className="mt-4 font-display text-4xl leading-[1.02] text-ink sm:text-5xl">
             RESULTADO É O QUE FALA POR NÓS
-          </h2>
+          </SplitText>
         </motion.div>
+      </div>
 
-        <motion.div
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, amount: 0.2 }}
-          variants={{ show: { transition: { staggerChildren: 0.12 } } }}
-          className="mt-14 grid grid-cols-1 gap-6 lg:grid-cols-3"
-        >
-          {TESTIMONIALS.map((t) => (
-            <motion.figure
-              key={t.name}
-              variants={{
-                hidden: { opacity: 0, y: 30 },
-                show: { opacity: 1, y: 0, transition: { duration: 0.5 } },
-              }}
-              whileHover={{ y: -6, rotate: -0.5 }}
-              className="flex flex-col border border-ink/10 bg-white p-7 transition-shadow hover:shadow-[8px_8px_0_0_#0A0A0A]"
-            >
-              <div className="flex gap-1 text-safety-dim">
-                {Array.from({ length: 5 }).map((_, i) => (
-                  <Star key={i} className="h-4 w-4 fill-current" />
-                ))}
-              </div>
-              <blockquote className="mt-4 flex-1 font-body text-[15px] leading-relaxed text-ink/75">
-                “{t.quote}”
-              </blockquote>
-              <figcaption className="mt-6 flex items-center gap-3 border-t border-ink/10 pt-5">
-                <img
-                  src={t.img}
-                  alt={t.name}
-                  className="h-11 w-11 rounded-full object-cover grayscale"
-                />
-                <div>
-                  <div className="font-head text-sm font-bold text-ink">{t.name}</div>
-                  <div className="font-mono text-[11px] uppercase tracking-wide text-ink/45">
-                    {t.role}
-                  </div>
-                </div>
-              </figcaption>
-            </motion.figure>
-          ))}
-        </motion.div>
+      <motion.div
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true, amount: 0.2 }}
+        transition={{ duration: 0.6 }}
+        className="mt-14"
+      >
+        <InfiniteMovingCards items={TESTIMONIALS} />
+      </motion.div>
+
+      <div className="mx-auto mt-20 max-w-7xl px-5 sm:px-8">
+        <div className="grid grid-cols-1 gap-12 border-t border-ink/10 pt-16 lg:grid-cols-2 lg:items-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.4 }}
+            transition={{ duration: 0.5 }}
+          >
+            <span className="font-mono text-xs font-semibold uppercase tracking-widest text-ink/40">
+              {CASE_DESTAQUE.eyebrow}
+            </span>
+            <h3 className="mt-3 font-display text-3xl leading-[1.05] text-ink sm:text-4xl">
+              {CASE_DESTAQUE.title}
+            </h3>
+            <p className="mt-4 max-w-md font-body text-base leading-relaxed text-ink/65">
+              {CASE_DESTAQUE.desc}
+            </p>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+          >
+            <CompareSlider
+              before={CASE_DESTAQUE.before}
+              after={CASE_DESTAQUE.after}
+              beforeLabel={CASE_DESTAQUE.beforeLabel}
+              afterLabel={CASE_DESTAQUE.afterLabel}
+              className="border-2 border-ink shadow-[10px_10px_0_0_#0A0A0A]"
+            />
+          </motion.div>
+        </div>
       </div>
     </section>
   );

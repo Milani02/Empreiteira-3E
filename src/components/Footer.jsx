@@ -9,7 +9,7 @@ export default function Footer() {
           <div>
             <div className="flex items-center gap-3">
               <span className="flex h-10 w-10 items-center justify-center bg-safety font-display text-lg text-ink">
-                3E
+                3M
               </span>
               <span className="font-head text-base font-extrabold text-white">EMPREITEIRA</span>
             </div>
@@ -20,7 +20,7 @@ export default function Footer() {
             <div className="mt-6 flex gap-3">
               <a
                 href="#"
-                aria-label="Instagram da 3E Empreiteira"
+                aria-label="Instagram da 3M Empreiteira"
                 data-cursor="view"
                 className="flex h-9 w-9 items-center justify-center border border-white/15 transition-colors hover:border-safety hover:text-safety"
               >
@@ -28,7 +28,7 @@ export default function Footer() {
               </a>
               <a
                 href="#"
-                aria-label="Facebook da 3E Empreiteira"
+                aria-label="Facebook da 3M Empreiteira"
                 data-cursor="view"
                 className="flex h-9 w-9 items-center justify-center border border-white/15 transition-colors hover:border-safety hover:text-safety"
               >
@@ -63,7 +63,7 @@ export default function Footer() {
               </li>
               <li className="flex items-start gap-2.5">
                 <Mail className="mt-0.5 h-4 w-4 flex-shrink-0 text-safety" />
-                contato@3eempreiteira.com.br
+                contato@3mempreiteira.com.br
               </li>
               <li className="flex items-start gap-2.5">
                 <MapPin className="mt-0.5 h-4 w-4 flex-shrink-0 text-safety" />
@@ -85,7 +85,7 @@ export default function Footer() {
         </div>
 
         <div className="flex flex-col gap-3 border-t border-white/10 py-6 font-mono text-[11px] uppercase tracking-wide sm:flex-row sm:items-center sm:justify-between">
-          <span>© 2026 3E Empreiteira. Todos os direitos reservados.</span>
+          <span>© 2026 3M Empreiteira. Todos os direitos reservados.</span>
           <span>CNPJ 00.000.000/0001-00 (fictício)</span>
         </div>
       </div>
